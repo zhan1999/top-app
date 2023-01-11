@@ -14,7 +14,8 @@
       {
         "allowSingleExtends": true
       }
-    ]
+    ],
+    "linebreak-style": ["error", "windows"]
   },
   "extends": [
     "eslint:recommended",
