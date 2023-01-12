@@ -3,6 +3,7 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
+    "noImplicitAny": false,
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
@@ -17,6 +18,6 @@
     "incremental": true,
     "sourceMap": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env-custom.d.ts", "images.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
