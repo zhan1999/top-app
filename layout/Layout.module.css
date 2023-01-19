@@ -7,6 +7,7 @@
 	". sidebar body ."
 	"footer footer footer footer";
 	min-height: 100vh;
+	gap: 0 30px;
 }
 
 .header {
@@ -25,6 +26,7 @@
 .footer {
 	grid-area: footer;
 }
+
 
 @media (max-width: 765px) {
 	.sidebar {
