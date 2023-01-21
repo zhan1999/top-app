@@ -8,8 +8,12 @@ import { withLayout } from '../layout/Layout';
 import axios from 'axios';  
 import { MenuItem } from '../interfaces/menu.interface';
 
-   
-function Home({menu}):JSX.Element {
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+  firstCategory: number;
+}
+
+function Home({menu}: HomeProps):JSX.Element {
   const [rating, setRating] = useState<number>(4);
   
   return (
@@ -48,8 +52,3 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       }
     };
 };
-
-interface HomeProps extends Record<string, unknown> {
-  menu: MenuItem[];
-  firstCategory: number;
-}
