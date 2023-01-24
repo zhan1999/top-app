@@ -24,9 +24,9 @@ export const withLayout = <T extends Record<string, unknown> & IAppContext>(Comp
 	return function withLayoutComponent(props: T): JSX.Element {
 		return (
 			<AppContextProvider menu={props.menu} firstCategory={props.firstCategory}>
-			<Layout>
-				<Component {...props} />
-			</Layout>
+				<Layout>
+					<Component {...props} />
+				</Layout>
 			</AppContextProvider>
 		);
 	};
