@@ -3,35 +3,23 @@ import styles from './Menu.module.css';
 import cn from 'classnames';
 import { AppContext } from '../../context/app.context';
 import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
-import CoursesIcon from './icons/courses.svg';
-import ServicesIcon from './icons/services.svg';
-import BooksIcon from './icons/books.svg';
-import ProductsIcon from './icons/products.svg';
-import { TopLevelCategory } from '../../interfaces/page.interface';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-	{route: 'courses', name: 'Курсы', icon: <CoursesIcon/>, id: TopLevelCategory.Courses},
-	{route: 'services', name: 'Сервисы', icon: <ServicesIcon />, id: TopLevelCategory.Services},
-	{route: 'books', name: 'Книги', icon: <BooksIcon/>, id: TopLevelCategory.Books},
-	{route: 'products', name: 'Товары', icon: <ProductsIcon/>, id: TopLevelCategory.Products}
-];
+import { firstLevelMenu } from '../../helpers/helpers';
 
 export const Menu = (): JSX.Element => {
 
 	const { menu, setMenu, firstCategory } = useContext(AppContext);
 	const router = useRouter();
 
-	const openSecondLevel = (secondCategory:string) => {
+	const openSecondLevel = (secondCategory: string) => {
 		setMenu && setMenu(menu.map(m => {
 			if (m._id.secondCategory == secondCategory) {
 				m.isOpened = !m.isOpened;
 			}
 			return m;
 		}));
-	}
+	};
 
 
 	const buildFirstLevel = () => {
