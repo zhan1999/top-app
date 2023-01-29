@@ -1,6 +1,7 @@
-.input {
-	display: block;
-	
+.textarea {
+
+	display: inline-block;
+
 	padding: 7px 15px;
 	color: var(--black);
 	border: none;
@@ -12,8 +13,10 @@
 	font-size: 16px;
 	line-height: 22px;
 	font-family: var(--font-family);
+
+	resize: none;
 }
 
-.input::placeholder {
+.textarea::placeholder {
 	color: var(--gray);
 }
