@@ -7,6 +7,7 @@ import { Htag, Button, P, Tag, Rating, Input, TextArea } from '../components';
 import { withLayout } from '../layout/Layout';
 import axios from 'axios';  
 import { MenuItem } from '../interfaces/menu.interface';
+import Search from './search';
 
 interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[];
@@ -32,7 +33,7 @@ function Home({menu}: HomeProps):JSX.Element {
       <Rating isEditable rating={rating} setRating={setRating} /> 
       <Input placeholder='test' /> 
       <P>Средний параграф</P>
-      <TextArea placeholder='test' cols={40} rows={3}   />
+      <TextArea placeholder='test' cols={40} rows={3} />
      </>
   );
 }
