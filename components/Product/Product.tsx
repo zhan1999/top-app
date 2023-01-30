@@ -9,8 +9,6 @@ import { declOfNum, priceRu } from '../../helpers/helpers';
 import { Divider } from '../Divider/Divider';
 import Image from 'next/image';
 
-
-
 // In Next13, Image component has size and fill properties instead of layout
 // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 // https://nextjs.org/docs/api-reference/next/image
@@ -61,7 +59,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 					<div>{product.disadvantages}</div>
 				</div>}
 			</div>
-			<Divider className={styles.hr}/>
+			<Divider className={cn(styles.hr, styles.hr2)}/>
 			<div className={styles.actions}>
 				<Button appearance='primary'>Узнать подробнее</Button>
 				<Button appearance='ghost' arrow='right' className={styles.reviewButton}>Читать отзывы</Button>
