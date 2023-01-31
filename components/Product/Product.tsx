@@ -8,14 +8,19 @@ import { Button } from '../Button/Button';
 import { declOfNum, priceRu } from '../../helpers/helpers';
 import { Divider } from '../Divider/Divider';
 import Image from 'next/image';
+import { useState } from 'react';
+import { Review } from '..';
 
 // In Next13, Image component has size and fill properties instead of layout
 // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 // https://nextjs.org/docs/api-reference/next/image
 
-export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
+export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
+	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+
 	return (
-		<Card className={styles.product} {...props}>
+		<>
+		<Card className={styles.product} cardColor='white' {...props}>
 			<div className={styles.logo}>
 				<Image
 					src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
@@ -62,8 +67,20 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 			<Divider className={cn(styles.hr, styles.hr2)}/>
 			<div className={styles.actions}>
 				<Button appearance='primary'>Узнать подробнее</Button>
-				<Button appearance='ghost' arrow='right' className={styles.reviewButton}>Читать отзывы</Button>
+					<Button
+						appearance='ghost'
+						arrow={isReviewOpened ? 'down' :'right'}
+						className={styles.reviewButton}
+						onClick={()=>setIsReviewOpened(!isReviewOpened)}
+					>Читать отзывы</Button>
 			</div>
 		</Card>
+			<Card cardColor='blue' className={cn(styles.reviews, {
+				[styles.opened]: isReviewOpened,
+				[styles.closed]: !isReviewOpened
+		})}> 
+				{product.reviews.map(r=> <Review review={r} key={r._id} /> )}  
+		</Card>
+		</>
 	);
 };
