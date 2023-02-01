@@ -9,7 +9,7 @@ import { declOfNum, priceRu } from '../../helpers/helpers';
 import { Divider } from '../Divider/Divider';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Review } from '..';
+import { Review, ReviewForm } from '..';
 
 // In Next13, Image component has size and fill properties instead of layout
 // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -79,7 +79,13 @@ export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 				[styles.opened]: isReviewOpened,
 				[styles.closed]: !isReviewOpened
 		})}> 
-				{product.reviews.map(r=> <Review review={r} key={r._id} /> )}  
+				{product.reviews.map(r =>
+					<>
+						<Review review={r} key={r._id}/>
+						<Divider />
+					</>	
+				)}  
+				<ReviewForm productId={ product._id } />
 		</Card>
 		</>
 	);
