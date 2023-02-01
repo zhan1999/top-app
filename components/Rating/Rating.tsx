@@ -1,11 +1,14 @@
-import React, { useEffect, useState, KeyboardEvent } from 'react';
+import React, { useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef } from 'react';
 import { RatingProps } from './Rating.props';
 import styles from './Rating.module.css';
 import StarIcon from './star.svg';
 import cn from 'classnames';
 
 
-export const Rating = ({ isEditable=false, rating, setRating, ...props }: RatingProps): JSX.Element => {
+export const Rating = forwardRef(({ isEditable=false, rating, setRating, ...props }: RatingProps, ref:ForwardedRef<HTMLDivElement>): JSX.Element => {
+
+	Rating.displayName = "Rating";
+
 	// ratingArray is just a current appearance of rating component, not its value
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
@@ -64,8 +67,8 @@ export const Rating = ({ isEditable=false, rating, setRating, ...props }: Rating
 
 
 	return (
-		<div {...props}>
+		<div {...props} ref={ref}>
 			{ratingArray.map((r, i) => (<span key={i}>{r}</span>))}
 		</div>
 	);
-};
+});

@@ -1,9 +1,13 @@
 import { InputProps } from './Input.props';
 import styles from './Input.module.css';
 import cn from 'classnames';
+import { ForwardedRef, forwardRef } from 'react';
 
-export const Input = ({ className, ...props }: InputProps): JSX.Element => {
+export const Input = forwardRef(({ className, ...props }: InputProps, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+	
+	Input.displayName = "Input";
+	
 	return (
-		<input className={cn(className, styles.input)} {...props} type="text" />
+		<input className={cn(className, styles.input)} ref={ref} {...props} type="text" />
 	);
-};
+});

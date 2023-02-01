@@ -18,12 +18,17 @@ import { Review, ReviewForm } from '..';
 export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
 
+	const src = process.env.NEXT_PUBLIC_DOMAIN + product.image;
+	//const src = product.image;
+
 	return (
 		<>
 		<Card className={styles.product} cardColor='white' {...props}>
 			<div className={styles.logo}>
 				<Image
-					src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
+	
+					unoptimized
+					src={src}
 					alt={product.title}
 					width={70}
 					height={70}
@@ -80,10 +85,10 @@ export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 				[styles.closed]: !isReviewOpened
 		})}> 
 				{product.reviews.map(r =>
-					<>
-						<Review review={r} key={r._id}/>
+					<div key={r._id}>
+						<Review review={r}/>
 						<Divider />
-					</>	
+					</div>	
 				)}  
 				<ReviewForm productId={ product._id } />
 		</Card>
