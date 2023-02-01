@@ -10,3 +10,18 @@
 	cursor: pointer;
 }
 
+
+.error svg{
+	stroke: var(--red);
+}
+
+.ratingWrapper {
+	position: relative;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -15px;
+	left: 0;
+	color: var(--red);
+}
