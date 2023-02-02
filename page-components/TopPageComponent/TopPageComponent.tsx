@@ -3,9 +3,8 @@ import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import { SortEnum } from '../../components/Sort/Sort.props';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
-import { ProductModel } from '../../interfaces/product.interface';
 
 export const TopPageComponent = ({ page, products, firstCategory  }: TopPageComponentProps): JSX.Element => {
 
@@ -14,6 +13,11 @@ export const TopPageComponent = ({ page, products, firstCategory  }: TopPageComp
 	const setSort = (sort: SortEnum) => {
 		dispatchSort({ type: sort });
 	};
+
+	// update list of products 
+	useEffect(() => {
+		dispatchSort({ type: 'reset', initialState: products });
+	}, [products]);
 
 	return (
 		<div className={styles.wrapper}>
