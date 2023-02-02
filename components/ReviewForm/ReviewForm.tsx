@@ -19,6 +19,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 	const [error, setError] = useState<string>();
 	
+// send form data to backend
 	const onSubmit = async (formData: IReviewForm) => {
 		try {
 			const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });

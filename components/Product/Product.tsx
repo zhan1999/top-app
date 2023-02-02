@@ -8,25 +8,33 @@ import { Button } from '../Button/Button';
 import { declOfNum, priceRu } from '../../helpers/helpers';
 import { Divider } from '../Divider/Divider';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Review, ReviewForm } from '..';
 
 // In Next13, Image component has size and fill properties instead of layout
 // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
 // https://nextjs.org/docs/api-reference/next/image
 
-export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
+export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+	const reviewRef = useRef<HTMLDivElement>(null);
 
+	const scrollToReview = () => {
+		setIsReviewOpened(true);
+		reviewRef.current?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start'
+		});
+	};
+	
 	const src = process.env.NEXT_PUBLIC_DOMAIN + product.image;
 	//const src = product.image;
 
 	return (
-		<>
+		<div className={className} {...props}>
 		<Card className={styles.product} cardColor='white' {...props}>
 			<div className={styles.logo}>
 				<Image
-	
 					unoptimized
 					src={src}
 					alt={product.title}
@@ -47,7 +55,7 @@ export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 			<div className={styles.tags}>{product.categories.map(c => <Tag className={styles.category} color='ghost' key={c}>{c}</Tag>)}</div>
 			<div className={styles.priceTitle}>цена</div>
 			<div className={styles.creditTitle}>кредит</div>
-			<div className={styles.rateTitle}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}</div>
+			<div className={styles.rateTitle}><a href="#ref" onClick={scrollToReview}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}</a></div>
 			<Divider className={styles.hr}/>
 			<div className={styles.description}>{product.description}</div>
 			<div className={styles.feature}>
@@ -80,10 +88,10 @@ export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 					>Читать отзывы</Button>
 			</div>
 		</Card>
-			<Card cardColor='blue' className={cn(styles.reviews, {
+		<Card cardColor='blue' className={cn(styles.reviews, {
 				[styles.opened]: isReviewOpened,
 				[styles.closed]: !isReviewOpened
-		})}> 
+		})} ref={reviewRef}> 
 				{product.reviews.map(r =>
 					<div key={r._id}>
 						<Review review={r}/>
@@ -92,6 +100,6 @@ export const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 				)}  
 				<ReviewForm productId={ product._id } />
 		</Card>
-		</>
+		</div>
 	);
 };
