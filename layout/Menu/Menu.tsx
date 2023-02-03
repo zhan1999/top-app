@@ -6,6 +6,7 @@ import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { firstLevelMenu } from '../../helpers/helpers';
+import { motion } from 'framer-motion';
 
 export const Menu = (): JSX.Element => {
 
@@ -21,6 +22,30 @@ export const Menu = (): JSX.Element => {
 		}));
 	};
 
+	const variants = {
+		visible: {
+			transition: {
+				marginBottom: 20,
+				when: 'beforeChildren',
+				staggerChildren: 0.1
+			}
+		},
+		hidden: {
+			marginBottom: 0
+		}
+	};
+
+	// if menu item is long and takes up two lines, its height is more than 19+10=29px !!
+	const variantsChildren = {
+		visible: {
+			opacity: 1,
+			height: '100%'
+		},
+		hidden: {
+			opacity: 0,
+			height: 0
+		}
+	};
 
 	const buildFirstLevel = () => {
 		return (
@@ -54,11 +79,15 @@ export const Menu = (): JSX.Element => {
 							<div className={styles.secondLevel}>
 								{m._id.secondCategory}
 							</div>
-							<div className={cn(styles.secondLevelBlock,
-								{ [styles.secondLevelBlockOpened]: m.isOpened }
-							)}>
+							<motion.div
+								layout
+								variants={variants}
+								initial={m.isOpened ? 'visible' : 'hidden'}
+								animate={m.isOpened ? 'visible' : 'hidden'}
+								className={cn(styles.secondLevelBlock)}
+							>
 								{buildThirdLevel(m.pages, menuItem.route)}
-							</div>
+							</motion.div>
 						</div>
 					);
 				})}
@@ -69,13 +98,15 @@ export const Menu = (): JSX.Element => {
 	const buildThirdLevel = (pages: PageItem[], route: string) => {
 		return (
 			pages.map(p => (
-				<Link href={`/${route}/${p.alias}`} key={p._id}>
+				<motion.div key={p._id} variants={variantsChildren}>
+				<Link href={`/${route}/${p.alias}`}>
 				<div className={cn(styles.thirdLevel, {
 					[styles.thirdLevelActive]: `/${route}/${p.alias}` == router.asPath
 				})}>
 					{p.category}
 				</div>
 				</Link>
+				</motion.div>
 			))
 		);
 	};

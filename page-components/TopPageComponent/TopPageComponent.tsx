@@ -14,7 +14,8 @@ export const TopPageComponent = ({ page, products, firstCategory  }: TopPageComp
 		dispatchSort({ type: sort });
 	};
 
-	// update list of products 
+	// update state (sortedProducts) and list of products when new props (products) are received 
+	// during client-side routing
 	useEffect(() => {
 		dispatchSort({ type: 'reset', initialState: products });
 	}, [products]);

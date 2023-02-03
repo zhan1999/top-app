@@ -39,20 +39,21 @@
 }
 
 .secondLevelBlock { 
-	display: none;
+	overflow: hidden;
+	/* display: none; */
 }
 
-.secondLevelBlockOpened {
+/* .secondLevelBlockOpened {
 	display: block;
 }
 
 .secondLevelBlockOpened:last-child {
 	margin-bottom: 20px;
-}
+} */
 
 .thirdLevel {
 	display: block;
-	margin-top: 10px;
+	margin-bottom: 10px;
 	cursor: pointer;
 
 	color: var(--gray-dark);
