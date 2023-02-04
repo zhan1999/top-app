@@ -24,10 +24,10 @@ export const Menu = (): JSX.Element => {
 
 	const variants = {
 		visible: {
+			marginBottom: 20,
 			transition: {
-				marginBottom: 20,
 				when: 'beforeChildren',
-				staggerChildren: 0.1
+				staggerChildren: 0.05
 			}
 		},
 		hidden: {
@@ -36,10 +36,16 @@ export const Menu = (): JSX.Element => {
 	};
 
 	// if menu item is long and takes up two lines, its height is more than 19+10=29px !!
+	// use 'max-height' instead of 'height'
+
 	const variantsChildren = {
 		visible: {
 			opacity: 1,
-			height: '100%'
+			height: 'auto',
+			transition: {
+				height: { duration: 0.4 },
+				opacity: { duration: 0.25, delay: 0.15 }
+			}
 		},
 		hidden: {
 			opacity: 0,
