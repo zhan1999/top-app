@@ -22,7 +22,7 @@ export const TopPageComponent = ({ page, products, firstCategory  }: TopPageComp
 
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.title}>
+				<div className={styles.title}>
 				<Htag tag='h1'>{page.title}</Htag>
 				{products && <Tag color='grey' size='m'>{products.length}</Tag>}
 				<Sort sort={sort} setSort={setSort} />
