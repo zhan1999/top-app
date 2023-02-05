@@ -7,7 +7,12 @@
 
 module.exports = {
 	reactStrictMode: true,
-  images: {
+	compiler: {
+    // Enables the styled-components SWC transform
+	// to avoid warning: Prop `className` did not match. when using styled components with semantic-ui-react
+		styledComponents: true
+	},
+	images: {
 		domains: ['courses-top.ru']
 	},
 	webpack(config, options) {
