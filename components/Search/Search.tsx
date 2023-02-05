@@ -32,8 +32,8 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 				className={styles.input}
 				placeholder='Поиск...'
 				value={search}
-				onChange={(e) => setSearch(e.target.value)}
 				onKeyDown={handleKeyDown}
+				onChange={(e) => setSearch(e.target.value)}
 			/>
 			<Button
 				appearance='primary'
