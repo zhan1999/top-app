@@ -30,6 +30,22 @@ export const Product = motion(forwardRef(function ProductFunction({ product, cla
 			block: 'start'
 		});
 	};
+
+	const variants = {
+		visible: {
+			opacity: 1,
+			height: 'auto',
+			transition: {
+				duration: 1,
+				ease: 'easeOut'
+				}
+			},
+		hidden: {
+			opacity: 0,
+			height: 0,
+			overflow: 'hidden'
+		}
+	};
 	
 	const src = process.env.NEXT_PUBLIC_DOMAIN + product.image;
 	//const src = product.image;
@@ -92,10 +108,13 @@ export const Product = motion(forwardRef(function ProductFunction({ product, cla
 					>Читать отзывы</Button>
 				</div>
 			</Card>
-			<Card cardColor='blue' className={cn(styles.reviews, {
-				[styles.opened]: isReviewOpened,
-				[styles.closed]: !isReviewOpened
-			})} ref={reviewRef}>
+			
+			<motion.div variants={variants} initial='hidden' animate={isReviewOpened ? 'visible' : 'hidden'}>
+			<Card
+				cardColor='blue'
+				className={cn(styles.reviews)}
+				ref={reviewRef}
+			>
 				{product.reviews.map(r =>
 					<div key={r._id}>
 						<Review review={r} />
@@ -104,6 +123,7 @@ export const Product = motion(forwardRef(function ProductFunction({ product, cla
 				)}
 				<ReviewForm productId={product._id} />
 			</Card>
+			</motion.div>
 		</div>
 	);
 }));
