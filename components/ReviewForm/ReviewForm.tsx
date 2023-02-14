@@ -28,10 +28,11 @@ export const ReviewForm = ({ productId, isOpened, className, ...props }: ReviewF
 				reset();
 			}
 			else {
-				setError('Что-то пошло не так')
+				setError('Что-то пошло не так');
 			}
 		} catch (e) {
-			setError(e.message);
+			// setError(e.message);
+			setError('Что-то пошло не так');
 		}
 	};
 
