@@ -16,6 +16,13 @@ a {
   text-decoration: none;
 }
 
+.visuallyHidden {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
 :root {
   --black: #3B434E;
   --gray:#A4A4A4;
