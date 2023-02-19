@@ -39,18 +39,24 @@ export const Rating = forwardRef(({ isEditable=false, rating, setRating, error, 
 		const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
 			return (
 				<span
-				key = {i}
-				className={cn(styles.star, {
-					[styles.filled]: i < currentRating,
-					[styles.editable]: isEditable
+					key={i}
+					className={cn(styles.star, {
+						[styles.filled]: i < currentRating,
+						[styles.editable]: isEditable
 					}
-				)}	
-				onMouseEnter={() => changeDisplay(i + 1)}
-				onMouseLeave={() => changeDisplay(rating)}
-				onClick={() => onClick(i + 1)}
-				tabIndex={computeFocus(rating, i)}
-				onKeyDown={handleKey}
-				ref={r=>ratingArrayRef.current?.push(r)}
+					)}
+					onMouseEnter={() => changeDisplay(i + 1)}
+					onMouseLeave={() => changeDisplay(rating)}
+					onClick={() => onClick(i + 1)}
+					tabIndex={computeFocus(rating, i)}
+					onKeyDown={handleKey}
+					ref={r => ratingArrayRef.current?.push(r)}
+					role={isEditable ? 'slider' : ''}
+					aria-invalid={error ? true: false}
+					aria-valuenow={rating}
+					aria-valuemax={5}
+					aria-valuemin={1}
+					aria-label={isEditable ? 'Укажите рейтинг' : ('рейтинг' + rating)}
 				>
 
 				<StarIcon
@@ -111,7 +117,7 @@ export const Rating = forwardRef(({ isEditable=false, rating, setRating, error, 
 			})}
 		>
 			{ratingArray.map((r, i) => (<span key={i}>{r}</span>))}
-			{error && <span className={styles.errorMessage}>{error.message}</span>}
+			{error && <span role='alert' className={styles.errorMessage}>{error.message}</span>}
 		</div>
 	);
 });
