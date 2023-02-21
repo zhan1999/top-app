@@ -19,6 +19,11 @@
 	fill: var(--primary);
 }
 
+.firstLevelList {
+	list-style: none;
+	padding: 0;
+}
+
 .secondLevel {
 	margin-bottom: 10px;
 	cursor: pointer;
@@ -28,17 +33,23 @@
 
 	font-weight: 300;
 	font-size: 12px;
+	border: none;
+	background: none;
+	padding: 0;
 }
 
 .secondBlock{
 	margin-left: 12px;
 	margin-top: 15px;
-	padding-left: 32px;
+	padding: 0 0 0 32px;
 	border-left: 1px solid #DFDFDF;
+	list-style: none;
 }
 
 .secondLevelBlock { 
 	overflow: hidden;
+	list-style: none;
+	padding: 0;
 	/* display: none; */
 }
 
