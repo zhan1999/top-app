@@ -6,13 +6,13 @@ import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { firstLevelMenu } from '../../helpers/helpers';
-import { motion } from 'framer-motion';
-import { Key } from 'readline';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export const Menu = (): JSX.Element => {
 
 	const { menu, setMenu, firstCategory } = useContext(AppContext);
-	const [announce, setAnnounce] = useState< 'closed' | 'opened'| undefined>();
+	const [announce, setAnnounce] = useState<'closed' | 'opened' | undefined>();
+	const shouldReduceMotion = useReducedMotion();
 	const router = useRouter();
 
 	const openSecondLevel = (secondCategory: string) => {
@@ -35,7 +35,7 @@ export const Menu = (): JSX.Element => {
 	const variants = {
 		visible: {
 			marginBottom: 20,
-			transition: {
+			transition: shouldReduceMotion ? {} :{
 				when: 'beforeChildren',
 				staggerChildren: 0.05
 			}
@@ -58,7 +58,7 @@ export const Menu = (): JSX.Element => {
 			}
 		},
 		hidden: {
-			opacity: 0,
+			opacity: shouldReduceMotion ? 1 : 0,
 			height: 0
 		}
 	};
