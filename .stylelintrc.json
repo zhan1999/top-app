@@ -2,10 +2,12 @@
   "extends": ["stylelint-config-standard", "stylelint-config-hudochenkov/full"],
   "plugins": ["stylelint-order"],
   "rules": {
+    "selector-class-pattern": "^[a-zA-Z0-9]+$",
     "indentation": [2],
     "color-hex-case": "upper",
     "selector-max-type": 1,
-    "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
-    "function-parentheses-newline-inside": "never-multi-line"
+    "function-parentheses-newline-inside": "never-multi-line",
+    "declaration-no-important": false,
+    "max-line-length": 160
   }
 }

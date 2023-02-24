@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
@@ -32,6 +33,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.31.0",
     "eslint-config-next": "^13.1.1",
+    "husky": "^8.0.3",
     "stylelint": "^14.16.1",
     "stylelint-config-hudochenkov": "^8.0.1",
     "stylelint-config-standard": "^29.0.0",
