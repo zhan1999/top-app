@@ -7,7 +7,7 @@
     "color-hex-case": "upper",
     "selector-max-type": 1,
     "function-parentheses-newline-inside": "never-multi-line",
-    "declaration-no-important": false,
-    "max-line-length": 160
+    "declaration-no-important": null,
+    "max-line-length": 280
   }
 }
