@@ -56,7 +56,7 @@ export const Product = motion(forwardRef(function ProductFunction({ product, cla
 			<Card className={styles.product} cardColor='white' {...props} ref={ref}>
 				<div className={styles.logo}>
 					<Image
-						unoptimized
+						// unoptimized
 						src={src}
 						alt={product.title}
 						width={70}

@@ -34,6 +34,7 @@ function Home({menu}: HomeProps):JSX.Element {
       <Input placeholder='test' /> 
       <P>Средний параграф</P>
       <TextArea placeholder='test' cols={40} rows={3} />
+      {/* <p>{menu.map(m => <>{ m._id }</>)}</p> */}
      </>
   );
 }
