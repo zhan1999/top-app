@@ -38,8 +38,9 @@ function Home({menu}: HomeProps):JSX.Element {
       <Rating isEditable rating={rating} setRating={setRating} /> 
       <Input placeholder='test' /> 
       <P>Средний параграф</P>
+      <P>{menu[1].isOpened?"open":"close"}</P>
       <TextArea placeholder='test' cols={40} rows={3} />
-      <p>{menu.map(m => <>{ m._id }</>)}</p>
+      {/* <P>{menu.map(m => <p>{m}</p>)}</P> */}
      </>
   );
 }
