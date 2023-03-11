@@ -3,7 +3,7 @@ import React from 'react';
 import { SortEnum, SortProps } from './Sort.props';
 import styles from './Sort.module.css';
 import cn from 'classnames';
-import SortIcon from './sort.svg';
+import SortIcon from './Sort.svg';
 
 
 export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Element => {
