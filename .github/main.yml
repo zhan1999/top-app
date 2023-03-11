@@ -14,8 +14,8 @@ jobs:
       with:
         registry: docker.pkg.github.com
         name: docker.pkg.github.com/zhan1999/top-app/top-app
-        username: ${{ secrets. DOCKER_USERNAME }}
-        username: ${{ secrets. DOCKER_PASSWORD }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.DOCKER_PASSWORD }}
         tags: "develop"
 
 
