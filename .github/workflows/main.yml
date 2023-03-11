@@ -13,8 +13,8 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
-          registry: docker.pkg.github.com
-          name: docker.pkg.github.com/zhan1999/top-app/top-app
+          registry: ghcr.io
+          name: ghcr.io/zhan1999/top-app/top-app
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
           tags: "develop"
